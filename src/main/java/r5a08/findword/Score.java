@@ -1,21 +1,21 @@
-package r5a08.stephane.findword;
+package r5a08.findword;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Score {
-    private List<Word.Letter> letterScores;
+    private List<Letter> letterScores;
 
 
     public Score() {
         this.letterScores = new ArrayList<>();
     }
 
-    public void addLetterScore(Word.Letter letter) {
+    public void addLetterScore(Letter letter) {
         letterScores.add(letter);
     }
 
-    public Word.Letter letter(int i) {
+    public Letter letter(int i) {
         return letterScores.get(i);
     }
 

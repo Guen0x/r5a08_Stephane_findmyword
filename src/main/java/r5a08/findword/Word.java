@@ -1,4 +1,4 @@
-package r5a08.stephane.findword;
+package r5a08.findword;
 
 public class Word {
     private String wordToGuess;  // Le mot à deviner
@@ -14,15 +14,14 @@ public class Word {
 
         // Comparaison de la lettre (test spécifique pour une lettre incorrecte)
         if (wordToGuess.charAt(0) != attempt.charAt(0)) {
-            score.addLetterScore(Word.Letter.INCORRECT); // Lettre incorrecte
+            score.addLetterScore(Letter.INCORRECT); // Lettre incorrecte
+        }
+
+        if(wordToGuess.charAt(0) == attempt.charAt(0)){
+            score.addLetterScore(Letter.CORRECT);
         }
 
         return score;
     }
 
-    public enum Letter {
-        CORRECT, // lettre correcte
-        PART_CORRECT, // lettre correcte mais mal placée
-        INCORRECT // lettre incorrecte
-    }
 }
