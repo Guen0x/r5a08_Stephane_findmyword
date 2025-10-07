@@ -4,23 +4,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Score {
-    private List<Letter> letterScores;
 
+    private final String correct;
+    private Letter result = Letter.INCORRECT;
 
-    public Score() {
-        this.letterScores = new ArrayList<>();
-    }
-
-    public void addLetterScore(Letter letter) {
-        letterScores.add(letter);
+    public Score(String correct) {
+        this.correct=correct;
     }
 
     public Letter letter(int i) {
-        return letterScores.get(i);
+        return result;
     }
 
-    public int size() {
-        return letterScores.size();
+    public void assess(int position, String attempt) {
+        if (isCorrectLetter(position, attempt)){
+            result = Letter.CORRECT;
+        }
+    }
+
+    private boolean isCorrectLetter(int position, String attempt) {
+        return this.correct.charAt(position) == attempt.charAt(position);
     }
 }
-

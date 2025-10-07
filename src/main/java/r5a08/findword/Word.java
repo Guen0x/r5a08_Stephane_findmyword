@@ -1,27 +1,19 @@
 package r5a08.findword;
 
 public class Word {
-    private String wordToGuess;  // Le mot à deviner
+    private String word;
 
-    // Constructeur
-    public Word(String wordToGuess) {
-        this.wordToGuess = wordToGuess;
+    public Word(String correctWord) {
+        this.word = correctWord;
     }
 
-    // Méthode pour comparer une tentative avec le mot à deviner
     public Score guess(String attempt) {
-        Score score = new Score();
+        Score score = new Score(word);
 
-        // Comparaison de la lettre (test spécifique pour une lettre incorrecte)
-        if (wordToGuess.charAt(0) != attempt.charAt(0)) {
-            score.addLetterScore(Letter.INCORRECT); // Lettre incorrecte
-        }
-
-        if(wordToGuess.charAt(0) == attempt.charAt(0)){
-            score.addLetterScore(Letter.CORRECT);
-        }
+        score.assess(0, attempt);
 
         return score;
     }
-
 }
+
+
