@@ -36,6 +36,62 @@ public class WordTest {
         // Assert
         Assertions.assertEquals(actual, expected);
     }
+    @Test
+    public void twoLetters_firstCorrect() {
+        Word word = new Word("EAAAAA");
+        Score score = word.guess("EXDEAA");
+
+        Letter expected = Letter.CORRECT;
+        Letter actual   = score.letter(0);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void twoLetters_secondIncorrect() {
+        Word word = new Word("EA");
+        Score score = word.guess("EX");
+
+        Letter expected = Letter.INCORRECT;
+        Letter actual   = score.letter(1);
+
+        assertEquals(expected, actual);
+    }
+    @Test
+    public void twoLetters_swapped_firstIsPartCorrect() {
+        Word word = new Word("EA");
+        Score score = word.guess("AE");
+
+        Letter expected = Letter.PART_CORRECT;
+        Letter actual   = score.letter(0);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void twoLetters_swapped_secondIsPartCorrect() {
+        Word word = new Word("EA");
+        Score score = word.guess("AE");
+
+        Letter expected = Letter.PART_CORRECT;
+        Letter actual   = score.letter(1);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void any_letters_One_IsMisplaced() {
+        Word word = new Word("BRIOCHE");
+        Score score = word.guess("BONJOUR");
+
+
+
+        Letter expected = Letter.PART_CORRECT;     // E présent mais pas au bon endroit
+        Letter actual   = score.letter(1);
+        assertEquals(expected, actual);
+    }
+
+
 }
 
 

@@ -1,7 +1,7 @@
 package r5a08.findword;
 
 public class Word {
-    private String word;
+    private final String word;
 
     public Word(String correctWord) {
         this.word = correctWord;
@@ -9,11 +9,7 @@ public class Word {
 
     public Score guess(String attempt) {
         Score score = new Score(word);
-
-        score.assess(0, attempt);
-
+        score.assess(attempt);
         return score;
     }
 }
-
-
