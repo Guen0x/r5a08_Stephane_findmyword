@@ -18,10 +18,10 @@ public class Score {
     public void assess(String attempt) {
         int n = correct.length();
         if (attempt.length() != n) {
-            throw new IllegalArgumentException("Attempt length must be " + n);
+            throw new IllegalArgumentException("Le mot doit être de longueur " + n);
         }
 
-        // Passe 1 : marquer les CORRECT et compter les lettres restantes de la solution
+        // Phase 1 : marquer les CORRECT et compter les lettres restantes de la solution
         int[] freq = new int[Character.MAX_VALUE + 1]; // compteur des lettres non encore utilisées
         for (int i = 0; i < n; i++) {
             char cCorr = correct.charAt(i);
@@ -34,7 +34,7 @@ public class Score {
             }
         }
 
-        // Passe 2 : pour les positions non CORRECT, décider PART_CORRECT si dispo dans freq
+        // Phase 2 : pour les positions non CORRECT, décider PART_CORRECT si dispo dans freq
         for (int i = 0; i < n; i++) {
             if (results[i] == Letter.CORRECT) continue;
             char cAtt = attempt.charAt(i);

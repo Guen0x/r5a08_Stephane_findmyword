@@ -86,7 +86,7 @@ public class WordTest {
 
 
 
-        Letter expected = Letter.PART_CORRECT;     // E présent mais pas au bon endroit
+        Letter expected = Letter.PART_CORRECT;     // O présent mais pas au bon endroit
         Letter actual   = score.letter(1);
         assertEquals(expected, actual);
     }
